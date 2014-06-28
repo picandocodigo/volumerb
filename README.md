@@ -24,10 +24,27 @@ The available methods are:
  * `up`   - Increases volume.
  * `down` - Decreases volume.
  * `mute` - Mutes/unmutes sound., `vol` and `mute`.
- 
+
 Example:
 
 ```ruby
+$ irb
+2.1.2 :001 > require 'volumerb'
+ => true
+2.1.2 :002 > Volumerb.vol
+ => {:value=>45, :state=>"on"}
+2.1.2 :003 > Volumerb.up
+ => {:value=>48, :state=>"on"}
+2.1.2 :004 > Volumerb.up
+ => {:value=>51, :state=>"on"}
+2.1.2 :005 > Volumerb.down
+ => {:value=>48, :state=>"on"}
+2.1.2 :006 > Volumerb.down
+ => {:value=>45, :state=>"on"}
+2.1.2 :007 > Volumerb.mute
+ => {:value=>45, :state=>"off"}
+2.1.2 :008 > Volumerb.mute
+ => {:value=>45, :state=>"on"}
 ```
 
 ## Contributing

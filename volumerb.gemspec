@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = Volumerb::VERSION
   spec.authors       = ["Fernando Briano"]
   spec.email         = ["fernando@picandocodigo.net"]
-  spec.description   = %q{Gem to manage the volume on GNU/Linux and Mac OS X operating systems}
+  spec.description   = %q{Gem to manage the computer's volume}
   spec.summary       = %q{Gem to manage the volume on GNU/Linux and Mac OS X operating systems}
   spec.homepage      = "https://github.com/picandocodigo/volumerb"
   spec.license       = "MIT"
@@ -19,6 +19,6 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 1.3"
-  spec.add_development_dependency "rake"
-  spec.add_development_dependency "minitest"
+  spec.add_development_dependency "rake", "~> 10.2"
+  spec.add_development_dependency "minitest", "~> 5.3"
 end
