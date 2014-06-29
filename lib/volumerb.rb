@@ -3,36 +3,46 @@ require 'volumerb/version'
 
 module Volumerb
   def self.up
-    mixer unless @mixer
-    @mixer.up
+    mixer.up
   end
 
   def self.down
-    mixer unless @mixer
-    @mixer.down
+    mixer.down
   end
 
   def self.mute
-    mixer unless @mixer
-    @mixer.mute
+    mixer.mute
   end
 
   def self.vol
-    mixer unless @mixer
-    @mixer.vol
+    mixer.vol
+  end
+
+  def self.state
+    mixer.vol[:state]
+  end
+
+  def self.value
+    mixer.vol[:value]
+  end
+
+  def self.value=(value)
+    mixer.value = value
   end
 
   private
 
   def self.mixer
-    if RUBY_PLATFORM =~ /linux/
-      require 'volumerb/linux_volume'
-      @mixer = Volumerb::LinuxVolume
-    elsif RUBY_PLATFORM =~ /darwin|macos/
-      require 'volumerb/mac_volume'
-      @mixer = Volumerb::MacVolume
-    else
-      raise "Unsupported Ruby platform"
+    @mixer ||= begin
+      if RUBY_PLATFORM =~ /linux/
+        require 'volumerb/linux_volume'
+        Volumerb::LinuxVolume
+      elsif RUBY_PLATFORM =~ /darwin|macos/
+        require 'volumerb/mac_volume'
+        Volumerb::MacVolume
+      else
+        raise "Unsupported Ruby platform"
+      end
     end
   end
 end

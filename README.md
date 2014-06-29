@@ -1,4 +1,4 @@
-# Volumerb
+# Volumerb 🔊
 
 Gem to manage the volume on GNU/Linux and Mac OS X operating systems.
 
@@ -19,11 +19,12 @@ Or install it yourself as:
 ## Usage
 
 The available methods are:
- * `vol`  - Returns the current volume state (on/off if unmuted/muted
+ * `vol`   - Returns the current volume state (on/off if unmuted/muted
    and a value)
- * `up`   - Increases volume.
- * `down` - Decreases volume.
- * `mute` - Mutes/unmutes sound., `vol` and `mute`.
+ * `up`    - Increases volume.
+ * `down`  - Decreases volume.
+ * `mute`  - Mutes/unmutes sound.
+ * `value` - Sets/gets the volume value
 
 Example:
 
@@ -56,5 +57,4 @@ $ irb
 5. Create new Pull Request
 
 ## TODO
-* Method for setting the volume value directly, eg: Volumerb.vol = 30
 * Customize volume increase/decrease

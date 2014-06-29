@@ -16,6 +16,11 @@ module Volumerb
       vol
     end
 
+    def self.value=(value)
+      `amixer set Master #{value}%`
+      vol
+    end
+
     def self.vol
       vol = `amixer get Master | grep "\[[0-9]*%\]\ \[o[n|f]"`
       number = vol.match(/([0-9]+)%/)[1]
