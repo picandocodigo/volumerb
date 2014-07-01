@@ -17,34 +17,50 @@ class VolumerbTest < Minitest::Test
     assert_includes 0..100, Volumerb.value
   end
 
+  def test_setting_value
+    previous = Volumerb.value
+    Volumerb.value = 50
+    assert_equal Volumerb.value, 50
+    Volumerb.value = 80
+    assert_equal Volumerb.value, 80
+    restore_volume(previous)
+  end
+
   def test_up
     previous = Volumerb.vol[:value]
-    assert_operator(previous, :<, Volumerb.up[:value])
+    if previous == 100
+      assert_equal(previous, Volumerb.up[:value])
+      Volumerb.value = 10
+      assert_operator(Volumerb.value, :<, Volumerb.up[:value])
+    else
+      assert_operator(previous, :<, Volumerb.up[:value])
+    end
     # Restore volume
-    Volumerb.down
+    restore_volume(previous)
   end
 
   def test_down
     previous = Volumerb.vol[:value]
+    if previous == 0
+      assert_equal(previous, Volumer.down[:value])
+      Volumerb.value = 40
+      assert_operator(Volumerb.value, :>, Volumerb.down[:value])
+    end
     assert_operator(previous, :>, Volumerb.down[:value])
     # Restore volume
-    Volumerb.up
+    restore_volume(previous)
   end
 
   def test_mute
     states = {'off' => 'on', 'on' => 'off'}
     assert_equal Volumerb.vol[:state], states[Volumerb.mute[:state]]
-    # Restore volume
+    # Restore state
     Volumerb.mute
   end
 
-  def test_value
-    volume = Volumerb.value
-    assert_includes 0..100, volume
-    Volumerb.value = 50
-    assert_equal Volumerb.value, 50
-    Volumerb.value = 80
-    assert_equal Volumerb.value, 80
-    Volumerb.value = volume
+  private
+
+  def restore_volume(previous)
+    Volumerb.value = previous
   end
 end

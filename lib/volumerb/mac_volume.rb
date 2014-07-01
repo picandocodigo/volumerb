@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
 module Volumerb
   module MacVolume
-    def self.up
+    def self.up(value = 3)
       osa 'set currentVolume to output volume of (get volume settings)
-           set volume output volume (currentVolume + 3)'
+           set volume output volume (currentVolume + #{value})'
       vol
     end
 
-    def self.down
+    def self.down(value = 3)
       osa 'set currentVolume to output volume of (get volume settings)
-           set volume output volume (currentVolume - 3)'
+           set volume output volume (currentVolume - #{value})'
       vol
     end
 
@@ -17,6 +17,11 @@ module Volumerb
       state = osa 'output muted of (get volume settings)'
       setmute = !eval(state)
       osa "set volume output muted #{setmute}"
+      vol
+    end
+
+    def self.value=(value)
+      osa 'set volume output volume (#{value})'
       vol
     end
 

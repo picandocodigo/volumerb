@@ -23,8 +23,9 @@ The available methods are:
    and a value)
  * `up`    - Increases volume.
  * `down`  - Decreases volume.
- * `mute`  - Mutes/unmutes sound.
+ * `mute`  - Mutes/unmutes.
  * `value` - Sets/gets the volume value
+ * `state` - Returns the volume state (muted/unmuted)
 
 Example:
 
@@ -33,19 +34,21 @@ $ irb
 2.1.2 :001 > require 'volumerb'
  => true
 2.1.2 :002 > Volumerb.vol
- => {:value=>45, :state=>"on"}
-2.1.2 :003 > Volumerb.up
- => {:value=>48, :state=>"on"}
-2.1.2 :004 > Volumerb.up
- => {:value=>51, :state=>"on"}
-2.1.2 :005 > Volumerb.down
- => {:value=>48, :state=>"on"}
-2.1.2 :006 > Volumerb.down
- => {:value=>45, :state=>"on"}
-2.1.2 :007 > Volumerb.mute
- => {:value=>45, :state=>"off"}
-2.1.2 :008 > Volumerb.mute
- => {:value=>45, :state=>"on"}
+ => {:value=>53, :state=>"on"}
+2.1.2 :003 > 10.times { Volumerb.down }
+ => 10
+2.1.2 :004 > Volumerb.value
+ => 23
+2.1.2 :005 > Volumerb.up 37
+ => {:value=>60, :state=>"on"}
+2.1.2 :006 > Volumerb.mute
+ => {:value=>60, :state=>"off"}
+2.1.2 :007 > Volumerb.state
+ => "off"
+2.1.2 :008 > Volumerb.value = 100
+ => 100
+2.1.2 :009 > Volumerb.vol
+ => {:value=>100, :state=>"off"}
 ```
 
 ## Contributing
@@ -55,6 +58,3 @@ $ irb
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
-
-## TODO
-* Customize volume increase/decrease

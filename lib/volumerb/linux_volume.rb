@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 module Volumerb
   module LinuxVolume
-    def self.up
-      `amixer -q sset Master 3%+`
+    def self.up(value = 3)
+      `amixer -q sset Master #{value}%+`
       vol
     end
 
-    def self.down
-      `amixer -q sset Master 3%-`
+    def self.down(value = 3)
+      `amixer -q sset Master #{value}%-`
       vol
     end
 

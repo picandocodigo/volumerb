@@ -2,12 +2,12 @@
 require 'volumerb/version'
 
 module Volumerb
-  def self.up
-    mixer.up
+  def self.up(value = 3)
+    mixer.up(value)
   end
 
-  def self.down
-    mixer.down
+  def self.down(value = 3)
+    mixer.down(value)
   end
 
   def self.mute
