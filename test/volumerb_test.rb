@@ -52,7 +52,7 @@ class VolumerbTest < Minitest::Test
   end
 
   def test_mute
-    states = {'off' => 'on', 'on' => 'off'}
+    states = { 'off' => 'on', 'on' => 'off' }
     assert_equal Volumerb.vol[:state], states[Volumerb.mute[:state]]
     # Restore state
     Volumerb.mute

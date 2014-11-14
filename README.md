@@ -21,10 +21,12 @@ Or install it yourself as:
 The available methods are:
  * `vol`   - Returns the current volume state (on/off if unmuted/muted
    and a value)
- * `up`    - Increases volume.
- * `down`  - Decreases volume.
+ * `up`    - Increases volume. By default it increases volume by 3%, but
+   you can pass a parameter between 0 and 100 like this: `Volumerb.up(50)`.
+ * `down`  - Decreases volume. By default it decreases volume by 3%, but
+   you can pass a parameter between 0 and 100 like this: `Volumerb.down(50)`.
  * `mute`  - Mutes/unmutes.
- * `value` - Sets/gets the volume value
+ * `value` - Sets/gets the volume value.
  * `state` - Returns the volume state (muted/unmuted)
 
 Example:
